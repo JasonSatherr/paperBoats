@@ -5,13 +5,13 @@ import numpy as np
 
 
 fig, ax = plt.subplots()
-plt.xlim([0, 10])
-plt.ylim([-5, 5])
-plt.autoscale(enable=False)
+ax.set_xlim([0, 10])
+ax.set_ylim([-5, 5])
+ax.autoscale(enable=False)
 position = 0
 xVals = np.linspace(0,10,10)
 yVals = np.zeros(xVals.shape)
-ax.scatter(xVals,yVals)
+scatterArtist = ax.scatter(xVals,yVals, facecolor='C0')
 
 
 
@@ -30,6 +30,7 @@ def addDotToPlot(xVal, yVal):
     global xVals
     global yVals
     global ax
+    global scatterArtist
     if (position >= len(xVals)):
         position = position-len(xVals)
     
@@ -37,8 +38,8 @@ def addDotToPlot(xVal, yVal):
     yVals[position%len(yVals)] = yVal
 
     position+=1
-    ax.clear()
-    ax.scatter(xVals, yVals)
+    scatterArtist.remove()
+    scatterArtist = ax.scatter(xVals, yVals, facecolor='C0')
 
 
 cid = fig.canvas.mpl_connect('button_press_event', onclick)
