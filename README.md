@@ -1,1 +1,1 @@
-!(paper boat on a stream)[./readMeMedia/paperBoat.png]
+![paper boat on a stream](./readMeMedia/paperBoat.png)
