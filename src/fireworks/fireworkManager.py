@@ -28,5 +28,17 @@ class FireworkManager:
     Returns a numpy array of the x positions of all fireworks particles.
     '''
     @staticmethod
-    def getXFireworks():
-        xPositions = np.ndarray(len(FireworkManager.fireworks)*len(fire))
+    def getXFireworks()->np.ndarray:
+        #num fireworks managed by the firework manager...
+        numFireworks = len(FireworkManager.fireworks)
+        #numParticles per firework
+        numParticles = len(FireworkManager.fireworks[0].particlesX)
+        #make a np array which will hold X values of all firework particles
+        xPositions = np.zeros(numFireworks*numParticles)
+        
+        #Fill in the xPositions
+        for x in range(len(FireworkManager.fireworks)):
+            
+        return xPositions
+
+
