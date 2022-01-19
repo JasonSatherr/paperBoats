@@ -1,8 +1,7 @@
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
-
-
+from fireworkManager import FireworkManager
 
 
 #xValues of the plotted dots
