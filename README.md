@@ -11,4 +11,6 @@ I shall attempt two challenges.
 ## Firework attempt 🧨
 
 First milestone:
+
+
 <img src="./readMeMedia/fireworksMilestone1.gif" alt="video of fireworks" width="400"/>
