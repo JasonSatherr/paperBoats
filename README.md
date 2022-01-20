@@ -1,4 +1,4 @@
-![paper boat on a stream](./readMeMedia/paperBoat.png)
+<!--![paper boat on a stream](./readMeMedia/paperBoat.png)-->
 
 # This python project attempts to make cool animations with matplotlib and numPy
 ---
