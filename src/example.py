@@ -7,31 +7,38 @@ that generated that point.
 import numpy as np
 import matplotlib.pyplot as plt
 
-X = np.random.rand(100, 1000)
-xs = np.mean(X, axis=1)
-ys = np.std(X, axis=1)
+randArr=np.random.rand(3*10)
+print(randArr)
+tupleTester = tuple(randArr[0:3])
+print(tupleTester)
+tupleArr = [tuple(randArr[3*x:3*x+3]) for x in range(len(randArr)//3)]
+print(tupleArr)
+print(type(tupleArr[0]))
+# X = np.random.rand(100, 1000)
+# xs = np.mean(X, axis=1)
+# ys = np.std(X, axis=1)
 
-fig, ax = plt.subplots()
-ax.set_title('click on point to plot time series')
-line, = ax.plot(xs, ys, 'o', picker=True, pickradius=5)  # 5 points tolerance
-
-
-def onpick(event):
-    if event.artist != line:
-        return
-    n = len(event.ind)
-    if not n:
-        return
-    fig, axs = plt.subplots(n, squeeze=False)
-    for dataind, ax in zip(event.ind, axs.flat):
-        ax.plot(X[dataind])
-        ax.text(0.05, 0.9,
-                f"$\\mu$={xs[dataind]:1.3f}\n$\\sigma$={ys[dataind]:1.3f}",
-                transform=ax.transAxes, verticalalignment='top')
-        ax.set_ylim(-0.5, 1.5)
-    fig.show()
-    return True
+# fig, ax = plt.subplots()
+# ax.set_title('click on point to plot time series')
+# line, = ax.plot(xs, ys, 'o', picker=True, pickradius=5)  # 5 points tolerance
 
 
-fig.canvas.mpl_connect('pick_event', onpick)
-plt.show()
+# def onpick(event):
+#     if event.artist != line:
+#         return
+#     n = len(event.ind)
+#     if not n:
+#         return
+#     fig, axs = plt.subplots(n, squeeze=False)
+#     for dataind, ax in zip(event.ind, axs.flat):
+#         ax.plot(X[dataind])
+#         ax.text(0.05, 0.9,
+#                 f"$\\mu$={xs[dataind]:1.3f}\n$\\sigma$={ys[dataind]:1.3f}",
+#                 transform=ax.transAxes, verticalalignment='top')
+#         ax.set_ylim(-0.5, 1.5)
+#     fig.show()
+#     return True
+
+
+# fig.canvas.mpl_connect('pick_event', onpick)
+# plt.show()

@@ -43,15 +43,19 @@ def addFirework(xVal,yVal):
         fireworkPosition = fireworkPosition-FireworkManager.getNumFireworks()
     #add in a new firework
     FireworkManager.spawnFirework(fireworkPosition, xVal, yVal)
-    xFireworks, yFireworks = FireworkManager.getParticlePositions()
-    print(xFireworks)
-    #update position of the firework particles
-    #move out of this function...
-    FireworkManager.updateFireworks()
+    #xFireworks, yFireworks = FireworkManager.getParticlePositions()
+
+    ######################################################
+    # print(xFireworks)
+    # #update position of the firework particles
+    # #move out of this function...
+    # FireworkManager.updateFireworks()
     fireworkPosition+=1
-    fireworkArtist.remove()
-    xFireworks, yFireworks = FireworkManager.getParticlePositions()
-    fireworkArtist = ax.scatter(xFireworks, yFireworks, facecolor='.5')
+    # fireworkArtist.remove()
+    # xFireworks, yFireworks = FireworkManager.getParticlePositions()
+    # fireworkArtist = ax.scatter(xFireworks, yFireworks, facecolor='.5')
+    ######################################################
+    FireworkManager.drawFireworks(ax)
 
 def addDotToPlot(xVal, yVal):
     global position

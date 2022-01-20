@@ -1,11 +1,27 @@
 from re import X
+import matplotlib.lines as mpl
 import numpy as np
 from fireworks.fireworkParticles import FireworkParticles
 
 
 class FireworkManager:
+
     fireworks = np.array( [FireworkParticles(-100,0) for i in range(10)],
                     dtype=object)
+
+    fireworksArtisits = np.array([None for i in range (len(fireworks))],
+                    dtype=object)
+
+    
+    def generateColors(fireworks):
+        numberFireworks = len(fireworks)
+        randArr=np.random.rand((3*numberFireworks))
+        colors =[tuple(randArr[3*x:3*x+3]) for x in range(len(randArr)//3)]
+        print(type(colors[0]))
+        return colors
+    
+    colors = generateColors(fireworks)
+    
 
     # updates the position of all fireworks particles
     @staticmethod
@@ -85,4 +101,37 @@ class FireworkManager:
         return yParticlePositions
 
     #OH WOW, WE SHOULD JUST HAVE A DRAW FUNCTION DOWN HERE THAT TAKES AX WOW
+    '''
+    Draws the fireworks to an axes
+    
+    @param ax Matplotlib axes'''
+    @staticmethod
+    def drawFireworks(ax):
+        #get the positions of the fireworks.
+        #yo, let's not even do this update step in the draw step
+        FireworkManager.updateFireworks()
+        #erase the dots of yester-Frame
+        if FireworkManager.fireworksArtisits[0] is not None:
+            FireworkManager.eraseArtists()
+        #iterate through all the fireworks so that we can have one artist
+        #per firework
+        i = 0
+        for firework in FireworkManager.fireworks:
+            xFirework = firework.particlesX
+            yFirework = firework.particlesY
+            FireworkManager.fireworksArtisits[i] = ax.scatter(
+                xFirework, yFirework, facecolor=FireworkManager.colors[i])
+            i += 1
+            print(i)
+            print(xFirework)
+            
 
+
+    '''
+    Erases the firework artists
+    
+    '''
+    @staticmethod
+    def eraseArtists():
+        for artist in FireworkManager.fireworksArtisits:
+            artist.remove()
