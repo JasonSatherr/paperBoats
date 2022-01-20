@@ -4,7 +4,7 @@ from fireworks.fireworkParticles import FireworkParticles
 
 
 class FireworkManager:
-    fireworks = np.array( [FireworkParticles(0,0) for i in range(10)],
+    fireworks = np.array( [FireworkParticles(-100,0) for i in range(10)],
                     dtype=object)
 
     # updates the position of all fireworks particles
@@ -13,6 +13,10 @@ class FireworkManager:
         for firework in FireworkManager.fireworks:
             firework.update()
 
+    # updates the position of all fireworks particles
+    @staticmethod
+    def getNumFireworks():
+        return len(FireworkManager.fireworks)
     '''
     Replaces the nth firework with a new firewok as a designated location
 
@@ -51,9 +55,14 @@ class FireworkManager:
         xPositions = np.zeros(numFireworks*numParticles)
         
         #Fill in the xPositions
-        for x in range(numFireworks):
+        for x in range(numFireworks):  #WRONG way to gather all the x position things x.x 
+
             xValsFirework = FireworkManager.fireworks[x].particlesX
-            xPositions[x, x+numParticles] = xValsFirework
+
+            #starting position of the firework particles
+            xSlicePosition =  x*numParticles
+            xPositions[xSlicePosition:xSlicePosition+numParticles] = xValsFirework
+
         return xPositions
 
     '''
@@ -69,9 +78,10 @@ class FireworkManager:
         yParticlePositions = np.zeros(numFireworks*numParticles)
         
         #Fill in the xPositions
-        for x in range(numFireworks):
-            yValsFirework = FireworkManager.fireworks[x].particlesX
-            yParticlePositions[x, x+numParticles] = yValsFirework
+        for y in range(numFireworks):
+            yValsFirework = FireworkManager.fireworks[y].particlesY
+            ySlicePosition =  y*numParticles
+            yParticlePositions[ySlicePosition:ySlicePosition+numParticles] = yValsFirework
         return yParticlePositions
 
     #OH WOW, WE SHOULD JUST HAVE A DRAW FUNCTION DOWN HERE THAT TAKES AX WOW
