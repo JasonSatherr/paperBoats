@@ -1,7 +1,7 @@
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
-from fireworkManager import FireworkManager
+from fireworks.fireworkManager import FireworkManager
 
 
 #xValues of the plotted dots
@@ -10,6 +10,7 @@ xVals = np.linspace(0,10,10)
 yVals = np.zeros(xVals.shape)
 #position in the array
 position = 0
+fireworkPosition = 0
 
 # CREATING THE PLOT AND PARAMS
 fig, ax = plt.subplots()
@@ -19,7 +20,10 @@ ax.set_ylim([-5, 5])
 ax.autoscale(enable=False)
 #set the color of the dots in the axes
 scatterArtist = ax.scatter(xVals,yVals, facecolor='C0')
-fireworkArtist = ax.scatter(xVals,yVals, facecolor='A5')
+
+#xpositions for firework particles
+xFireworks, yFireworks = FireworkManager.getParticlePositions()
+fireworkArtist = ax.scatter(xFireworks,yFireworks, facecolor='.5')
 
 def onclick(event):
 
@@ -32,19 +36,22 @@ def onclick(event):
     plt.show()
 
 def addFirework(xVal,yVal):
-    global position
+    global fireworkPosition
     global ax
     global fireworkArtist
-    if (position >= len(fireworks)):
-        position = position-len(fireworks)
-    
-    fireworks[position] = FireworkParticles(xVal, yVal)
-    position+=1
+    if (fireworkPosition >= FireworkManager.getNumFireworks()):
+        fireworkPosition = fireworkPosition-FireworkManager.getNumFireworks()
+    #add in a new firework
+    FireworkManager.spawnFirework(fireworkPosition, xVal, yVal)
+    xFireworks, yFireworks = FireworkManager.getParticlePositions()
+    print(xFireworks)
     #update position of the firework particles
-    for firework in fireworks:
-        firework.update()
+    #move out of this function...
+    FireworkManager.updateFireworks()
+    fireworkPosition+=1
     fireworkArtist.remove()
-    fireworkArtist = ax.scatter(xVals, yVals, facecolor='A5')
+    xFireworks, yFireworks = FireworkManager.getParticlePositions()
+    fireworkArtist = ax.scatter(xFireworks, yFireworks, facecolor='.5')
 
 def addDotToPlot(xVal, yVal):
     global position
