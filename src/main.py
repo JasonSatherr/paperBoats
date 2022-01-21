@@ -15,22 +15,16 @@ ax.set_xlim([0, 10])
 ax.set_ylim([-5, 5])
 ax.autoscale(enable=False)
 
-
+#actions to perform on click onto axes/figure?
 def onclick(event):
-    addFirework(event.xdata, event.ydata)
+    #spawn the a firework at click
+    FireworkManager.spawnNewFirework(event.xdata, event.ydata)
+    drawFirework(event.xdata, event.ydata)
     plt.show()
 
-def addFirework(xVal,yVal):
-    global fireworkPosition
+#draw the firework
+def drawFirework(xVal,yVal):
     global ax
-    global fireworkArtist
-    if (fireworkPosition >= FireworkManager.getNumFireworks()):
-        fireworkPosition = fireworkPosition-FireworkManager.getNumFireworks()
-    #add in a new firework
-    FireworkManager.spawnFirework(fireworkPosition, xVal, yVal)
-
-    #increment the position of the next firework to swap out
-    fireworkPosition+=1
     #draw all fireworks to the axes
     FireworkManager.drawFireworks(ax)
 
