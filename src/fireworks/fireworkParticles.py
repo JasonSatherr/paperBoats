@@ -23,15 +23,10 @@ class FireworkParticles:
         self.updateY()
 
     def updateX(self):
-        for index in range(len(self.particlesX)):
-            position = self.particlesX[index] + self.particleVelocities[index, 0]
-
-            self.particlesX[index] = position
+        self.particlesX = self.particlesX[:] + self.particleVelocities[:, 0]
 
     def updateY(self):
-        for index in range(len(self.particlesY)):
-            position = self.particlesY[index] + self.particleVelocities[index, 1]
-            self.particlesY[index] = position
+        self.particlesY = self.particlesY[:] + self.particleVelocities[:, 1]
     
     
 
