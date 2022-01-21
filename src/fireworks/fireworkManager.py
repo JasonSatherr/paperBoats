@@ -12,6 +12,8 @@ class FireworkManager:
     fireworks = np.array( [FireworkParticles(-100,0) for i in range(10)],
                     dtype=object)
 
+    fireworkLoadPosition = 0
+
     fireworksArtisits = np.array([None for i in range (len(fireworks))],
                     dtype=object)
 
@@ -25,6 +27,19 @@ class FireworkManager:
     
     colors = generateColors(fireworks)
     
+    @staticmethod
+    def spawnNewFirework(xVal, yVal):
+        pos = FireworkManager.fireworkLoadPosition
+        if (pos >= len(FireworkManager.fireworks)):
+            FireworkManager.fireworkLoadPosition = pos-len(FireworkManager.fireworks)
+            pos = FireworkManager.fireworkLoadPosition
+
+        #add in a new firework
+        FireworkManager.spawnFirework(pos, xVal, yVal)
+
+        #increment the position of the next firework to swap out
+        FireworkManager.fireworkLoadPosition+=1
+
 
     # updates the position of all fireworks particles
     @staticmethod
@@ -38,7 +53,7 @@ class FireworkManager:
     @param n The nth firework that gets replaced
         Perhaps we should have n internal to the firework manager...
     @param xVal The x position for the firework
-    @param yVal The y position for the firewor
+    @param yVal The y position for the firework
     '''
     @staticmethod
     def spawnFirework(n, xVal, yVal):
