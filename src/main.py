@@ -15,11 +15,6 @@ ax.set_xlim([0, 10])
 ax.set_ylim([-5, 5])
 ax.autoscale(enable=False)
 
-#xpositions for firework particles
-xFireworks, yFireworks = FireworkManager.getParticlePositions()
-fireworkArtist = ax.scatter(xFireworks,yFireworks, facecolor='.5')
-#so... we should definitely move the bulk of this code into the FWmanager^^
-
 
 def onclick(event):
     addFirework(event.xdata, event.ydata)
