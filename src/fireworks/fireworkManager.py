@@ -22,7 +22,6 @@ class FireworkManager:
         numberFireworks = len(fireworks)
         randArr=np.random.rand((3*numberFireworks))
         colors =[tuple(randArr[3*x:3*x+3]) for x in range(len(randArr)//3)]
-        print(type(colors[0]))
         return colors
     
     colors = generateColors(fireworks)
@@ -80,8 +79,7 @@ class FireworkManager:
             FireworkManager.fireworksArtisits[i] = ax.scatter(
                 xFirework, yFirework, facecolor=FireworkManager.colors[i])
             i += 1
-            print(i)
-            print(xFirework)
+
             
 
 
