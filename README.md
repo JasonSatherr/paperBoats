@@ -15,4 +15,4 @@ First milestone:
 
 <img src="./readMeMedia/fireworksMilestone1.gif" alt="video of fireworks" width="400"/>
 
-[![Fireworks milestone 2]({image-url})]({https://youtu.be/QiwI3aGyy8E} "Fireworks milestone 2")
+[SEE FIREWORKS MILESTONE 2 HERE](https://youtu.be/QiwI3aGyy8E)
