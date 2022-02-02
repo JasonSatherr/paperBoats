@@ -11,7 +11,7 @@ class FireworkParticles:
 
     def __init__(self, xSpawnPoint, ySpawnPoint) -> None:
         #The xPosition of the fireworks particles
-        self.particlesX = np.ndarray(8)
+        self.particlesX = np.ndarray(16)
         self.particlesX[:] = xSpawnPoint
         #The yPosition of the particles
         self.particlesY = np.ndarray(len(self.particlesX))
@@ -29,11 +29,17 @@ class FireworkParticles:
 
     '''Updates the x positions of the firework's particles'''
     def updateX(self):
-        self.particlesX = self.particlesX[:] + self.particleVelocities[:, 0]
+        #slow down the particles due to air resistance
+        self.particleVelocities[:, 0] = .95 * self.particleVelocities[:, 0]
+        self.particlesX = self.particleVelocities[:, 0] + self.particlesX[:]
 
     '''Updates the y positions of the firework's particles'''
     def updateY(self):
-        self.particlesY = self.particlesY[:] + self.particleVelocities[:, 1]
+        #simulate an acceleration downwards...
+        self.particleVelocities[:, 1] = self.particleVelocities[:, 1] - .01
+        #slow down to account of air resistance
+        self.particleVelocities[:, 1] = .95* self.particleVelocities[:, 1]
+        self.particlesY = self.particleVelocities[:, 1] + self.particlesY[:]
     
     
 
