@@ -2,6 +2,7 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 import numpy as np
+from playsound import playsound
 from fireworks.fireworkManager import FireworkManager
 
 
@@ -20,6 +21,7 @@ ax.autoscale(enable=False)
 def onclick(event):
     #spawn the a firework at click
     FireworkManager.spawnNewFirework(event.xdata, event.ydata)
+    
 
 
 def continueFireworks(frameNumber):

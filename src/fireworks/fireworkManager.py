@@ -1,6 +1,8 @@
 from re import X
 import matplotlib.lines as mpl
 import numpy as np
+import threading
+from playsound import playsound
 from fireworks.fireworkParticles import FireworkParticles
 
 '''
@@ -25,6 +27,10 @@ class FireworkManager:
         return colors
     
     colors = generateColors(fireworks)
+
+    @staticmethod
+    def playFireworkSound(name):
+        playsound('./media/sound/fireworkASound.mp3')
     
     @staticmethod
     def spawnNewFirework(xVal, yVal):
@@ -38,6 +44,10 @@ class FireworkManager:
 
         #increment the position of the next firework to swap out
         FireworkManager.fireworkLoadPosition+=1
+
+        #make the popping sound
+        x = threading.Thread(target=FireworkManager.playFireworkSound, args=(1,))
+        x.start()
 
 
     # updates the position of all fireworks particles
@@ -79,8 +89,6 @@ class FireworkManager:
             FireworkManager.fireworksArtisits[i] = ax.scatter(
                 xFirework, yFirework, facecolor=FireworkManager.colors[i])
             i += 1
-
-            
 
 
     '''
