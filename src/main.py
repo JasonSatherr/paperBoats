@@ -1,6 +1,8 @@
 import matplotlib as mpl
 import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
 import numpy as np
+from playsound import playsound
 from fireworks.fireworkManager import FireworkManager
 
 
@@ -19,16 +21,13 @@ ax.autoscale(enable=False)
 def onclick(event):
     #spawn the a firework at click
     FireworkManager.spawnNewFirework(event.xdata, event.ydata)
-    drawFirework(event.xdata, event.ydata)
-    plt.show()
+    
 
-#draw the firework
-def drawFirework(xVal,yVal):
-    global ax
-    #draw all fireworks to the axes
+
+def continueFireworks(frameNumber):
+    #update the position of the firework particles
     FireworkManager.drawFireworks(ax)
 
-
 cid = fig.canvas.mpl_connect('button_press_event', onclick)
-
+animation = FuncAnimation(fig, continueFireworks, interval=40)
 plt.show()
