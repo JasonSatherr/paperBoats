@@ -29,5 +29,5 @@ def continueFireworks(frameNumber):
     FireworkManager.drawFireworks(ax)
 
 cid = fig.canvas.mpl_connect('button_press_event', onclick)
-animation = FuncAnimation(fig, continueFireworks, interval=40)
+animation = FuncAnimation(fig, continueFireworks, interval=20)
 plt.show()
