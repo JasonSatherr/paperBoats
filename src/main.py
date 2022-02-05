@@ -11,7 +11,7 @@ fireworkPosition = 0
 #^^Move this into the firework manager...
 
 # CREATING THE PLOT AND PARAMS
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(num = "FIREWORKS YAY!")
 #set the length of the axis
 ax.set_xlim([0, 10])
 ax.set_ylim([-5, 5])

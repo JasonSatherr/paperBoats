@@ -26,7 +26,6 @@ class FireworkParticles:
         xVel , yVel = self.__getInitVelComponents()
         self.particleVelocities = np.block([[xVel],[yVel]])
         self.particleVelocities =.16* self.particleVelocities.transpose()
-        print(self.particleVelocities)
 
     '''
     Creates an array or initial speeds for the particles
