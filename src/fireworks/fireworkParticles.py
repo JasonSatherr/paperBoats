@@ -18,9 +18,9 @@ class FireworkParticles:
         self.particlesY[:] = ySpawnPoint
 
         #The rand normal velocities of each particle
-        self.particleVelocities = .08*np.random.randn(len(self.particlesX), 2)
+        self.particleVelocities = .1*np.random.randn(len(self.particlesX), 2)
         self.timeLived = 0
-        self.timeToLive = 10
+        self.timeToLive = 12
 
     '''
     Updates the positions of the firework's particles
