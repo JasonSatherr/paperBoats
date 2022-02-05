@@ -10,7 +10,7 @@ I shall attempt two challenges.
 
 ## Firework attempt 🧨
 
-First milestone:
+MILESTONE 1:
 
 
 <img src="./readMeMedia/fireworksMilestone1.gif" alt="video of fireworks" width="400"/>
