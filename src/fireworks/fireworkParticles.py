@@ -31,7 +31,7 @@ class FireworkParticles:
     Creates an array or initial speeds for the particles
     '''
     def __getInitSpeed(self):
-        speeds = np.random.normal(loc = 1, scale = .3, size = len(self.particlesX))
+        speeds = np.random.normal(loc = 1.2, scale = .25, size = len(self.particlesX))
         return speeds
 
     '''
@@ -44,6 +44,7 @@ class FireworkParticles:
         #assign the rest to Y
         ySpeedSquared  = np.square(speeds) - np.square(xSpeed)
         ySpeed = np.sqrt(ySpeedSquared)
+        
         return xSpeed, ySpeed
 
     '''
