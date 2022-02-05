@@ -11,7 +11,7 @@ fireworkPosition = 0
 #^^Move this into the firework manager...
 
 # CREATING THE PLOT AND PARAMS
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(num = "FIREWORKS YAY!")
 #set the length of the axis
 ax.set_xlim([0, 10])
 ax.set_ylim([-5, 5])
@@ -29,5 +29,5 @@ def continueFireworks(frameNumber):
     FireworkManager.drawFireworks(ax)
 
 cid = fig.canvas.mpl_connect('button_press_event', onclick)
-animation = FuncAnimation(fig, continueFireworks, interval=40)
+animation = FuncAnimation(fig, continueFireworks, interval=20)
 plt.show()

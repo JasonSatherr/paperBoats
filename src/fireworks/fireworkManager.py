@@ -84,10 +84,18 @@ class FireworkManager:
         #per firework
         i = 0
         for firework in FireworkManager.fireworks:
-            xFirework = firework.particlesX
-            yFirework = firework.particlesY
-            FireworkManager.fireworksArtisits[i] = ax.scatter(
-                xFirework, yFirework, facecolor=FireworkManager.colors[i])
+            if (not firework.isDead()):
+                xFirework = firework.particlesX
+                yFirework = firework.particlesY
+                FireworkManager.fireworksArtisits[i] = ax.scatter(
+                    xFirework, yFirework, facecolor=FireworkManager.colors[i])
+            else:
+                xFirework = np.empty(1)
+                xFirework.fill(-1)
+                yFirework = np.empty(1)
+                xFirework.fill(-1)
+                FireworkManager.fireworksArtisits[i] = ax.scatter(
+                    xFirework, yFirework, facecolor=FireworkManager.colors[i])
             i += 1
 
 
@@ -98,4 +106,5 @@ class FireworkManager:
     @staticmethod
     def eraseArtists():
         for artist in FireworkManager.fireworksArtisits:
-            artist.remove()
+            if artist is not None:
+                artist.remove()
